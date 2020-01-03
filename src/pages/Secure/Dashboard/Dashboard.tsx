@@ -1,7 +1,12 @@
 import React from 'react';
+import UnitMap from './UnitMap';
 
 export const Dashboard = () => {
-  return <div>Dashboard Page</div>;
+  return (
+    <div>
+      <UnitMap />
+    </div>
+  );
 };
 
 export default Dashboard;
