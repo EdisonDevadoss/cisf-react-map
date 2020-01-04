@@ -1,8 +1,8 @@
+import { filter } from 'lodash';
 import React, { useState } from 'react';
 import ReactMapGL, { Marker } from 'react-map-gl';
 import CityPin from '../../../../components/MapGl/CityPin';
 import tempData from '../../../../components/MapGl/tempData';
-import { filter } from 'lodash';
 
 const mapbox_api =
   'pk.eyJ1IjoiZWRpc29uZGV2YWRvc3MiLCJhIjoiY2s0MTNweHlhMDdwZDNwcG95cmJraGl6dyJ9.aUK57pw316_tz92_mwsagA';

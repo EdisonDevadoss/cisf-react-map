@@ -1,15 +1,15 @@
-import React, { PureComponent } from 'react';
 import moment from 'moment';
+import React, { PureComponent } from 'react';
 
 const defaultContainer = ({ children }: any) => <div className="control-panel">{children}</div>;
 
 export default class ControlPanel extends PureComponent<any> {
-  render() {
+  public render() {
     const Container = this.props.containerComponent || defaultContainer;
     const { settings } = this.props;
 
     const getDate = (number: any) => {
-      let date = moment('2019').add(number - 1, 'months');
+      const date = moment('2019').add(number - 1, 'months');
       return date.format('MMM-YYYY');
     };
 

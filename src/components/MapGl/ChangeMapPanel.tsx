@@ -9,7 +9,7 @@ const ChangeMapPanel = (props: any) => {
 
   const changeMap = (number: any) => {
     setRSelected(number);
-    props.changeMap(number)
+    props.changeMap(number);
   };
 
   return (

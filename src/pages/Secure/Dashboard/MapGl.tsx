@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ChangeMapPanel from '../../../components/MapGl/ChangeMapPanel';
-import UnitMapGl from './components/UnitMap';
 import EventMapGl from './components/EventMap';
+import UnitMapGl from './components/UnitMap';
 
 function MapG(props: any) {
   const [selectedMap, setSelectedMap] = useState(1);

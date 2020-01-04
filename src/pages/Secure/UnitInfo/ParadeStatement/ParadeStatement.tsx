@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 import Loader from 'components/Loader';
-import { Card, CardBody, CardHeader, Col, Row } from 'reactstrap';
 import { sortBy } from 'lodash';
 import moment from 'moment';
+import React, { useEffect, useState } from 'react';
+import { Card, CardBody, CardHeader, Col, Row } from 'reactstrap';
+import { CartesianGrid, Legend, Line, LineChart, Tooltip, XAxis, YAxis } from 'recharts';
 
 const labels = {
   total_strength: 'Total strength',

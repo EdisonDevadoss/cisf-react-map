@@ -15,7 +15,7 @@ const colors = [
 ];
 
 export default class LegenPanel extends PureComponent<any> {
-  render() {
+  public render() {
     const Container = this.props.containerComponent || defaultContainer;
     return (
       <Container>

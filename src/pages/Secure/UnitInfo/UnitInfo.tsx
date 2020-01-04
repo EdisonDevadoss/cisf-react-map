@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Button, Card, CardBody, CardHeader, Col, FormGroup, Row, Badge } from 'reactstrap';
+import React, { useEffect, useState } from 'react';
+import { Badge, Button, Card, CardBody, CardHeader, Col, FormGroup, Row } from 'reactstrap';
 import PradeStatement from './ParadeStatement';
 
 export const UnitInfo = (props: any) => {

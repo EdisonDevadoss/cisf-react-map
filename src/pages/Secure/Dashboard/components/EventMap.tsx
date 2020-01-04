@@ -1,12 +1,12 @@
+import { size } from 'lodash';
 import React, { Component } from 'react';
-import MapGL, { Source, Layer, Popup } from 'react-map-gl';
+import MapGL, { Layer, Popup, Source } from 'react-map-gl';
+import unitInfo from '../../../../config/unitInfo';
+import CityInfo from './CityInfo';
 import ControlPanel from './ControlPanel';
+import LegenPanel from './LegendPanel';
 import { dataLayer } from './MapStyle';
 import { updatePercentiles } from './utils';
-import LegenPanel from './LegendPanel';
-import CityInfo from './CityInfo';
-import { size } from 'lodash';
-import unitInfo from '../../../../config/unitInfo';
 
 const MAPBOX_TOKEN =
   process.env.MAPBOX_TOKEN ||
@@ -34,7 +34,7 @@ export default class App extends Component<any> {
     };
   }
 
-  componentDidMount() {
+  public componentDidMount() {
     fetch('./data.geojson')
       .then(res => {
         return res.json();
@@ -94,13 +94,13 @@ export default class App extends Component<any> {
       });
   }
 
-  _loadData = (data: any) => {
+  public _loadData = (data: any) => {
     const { month }: any = this.state;
     updatePercentiles(data, (f: any) => f.properties.units[month]);
     this.setState({ data });
   };
 
-  _updateSettings = (name: any, value: any) => {
+  public _updateSettings = (name: any, value: any) => {
     if (name === 'month') {
       this.setState({ month: value });
 
@@ -117,9 +117,9 @@ export default class App extends Component<any> {
     }
   };
 
-  _onViewportChange = (viewport: any) => this.setState({ viewport });
+  public _onViewportChange = (viewport: any) => this.setState({ viewport });
 
-  _onHover = (event: any) => {
+  public _onHover = (event: any) => {
     const {
       features,
       srcEvent: { offsetX, offsetY },
@@ -129,7 +129,7 @@ export default class App extends Component<any> {
     this.setState({ hoveredFeature, x: offsetX, y: offsetY });
   };
 
-  _renderTooltip() {
+  public _renderTooltip() {
     const { hoveredFeature, x, y }: any = this.state;
 
     return (
@@ -148,7 +148,7 @@ export default class App extends Component<any> {
     );
   }
 
-  onClick = (event: any) => {
+  public onClick = (event: any) => {
     const feature = event.features && event.features[0];
     const { month }: any = this.state;
     if (feature && size(feature.properties) > 0) {
@@ -156,7 +156,7 @@ export default class App extends Component<any> {
         popupInfo: {
           name: feature.properties.name,
           lngLat: event.lngLat,
-          month: month,
+          month,
           year: 2019,
         },
       });
@@ -165,7 +165,7 @@ export default class App extends Component<any> {
     }
   };
 
-  _renderPopup() {
+  public _renderPopup() {
     const { popupInfo }: any = this.state;
 
     return (
@@ -184,7 +184,7 @@ export default class App extends Component<any> {
     );
   }
 
-  render() {
+  public render() {
     const { viewport, data, popupInfo }: any = this.state;
 
     return (

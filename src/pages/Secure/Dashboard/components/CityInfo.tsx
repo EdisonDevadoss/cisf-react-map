@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { size, map, filter } from 'lodash';
-import cityInfosData from '../../../../config/eventInfo';
+import { filter, map, size } from 'lodash';
 import moment from 'moment';
+import React, { useEffect, useState } from 'react';
+import cityInfosData from '../../../../config/eventInfo';
 
 const CityInfo = (props: any) => {
   const [cityInfos, setCityInfos]: any = useState([]);
