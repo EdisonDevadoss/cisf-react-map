@@ -15,7 +15,7 @@ const PradeStatement = (props: any) => {
 
   useEffect(() => {
     setFetching(true);
-    fetch(`http://127.0.0.1:5000/v1/parade_statement?id=${props.unitId}`)
+    fetch(`https://cisf-demo-api.herokuapp.com/v1/parade_statement?id=${props.unitId}`)
       .then(res => {
         return res.json();
       })
@@ -46,6 +46,33 @@ const PradeStatement = (props: any) => {
     return <span style={{ color }}>{labels[value]}</span>;
   }
 
+  const CustomTooltip = ({ active, payload, label }: any) => {
+    if (active) {
+      return (
+        <div
+          style={{ background: '#FFFFFF', padding: 2, border: '1px solid', borderColor: '#DEDEDE' }}
+        >
+          <p style={{ margin: 3 }}>
+            Parade ID : <span>{payload[0].payload.parade_id}</span>
+          </p>
+          <p style={{ margin: 3, color: '#82ca9d' }}>
+            Total Strength :<span>{payload[0].payload.total_strength}</span>
+          </p>
+          <p style={{ margin: 3 }}>
+            Deficiency : <span>{payload[0].payload.deficiency}</span>
+          </p>
+          <p style={{ margin: 3 }}>
+            Surplus : <span>{payload[0].payload.surplus}</span>
+          </p>
+          <p style={{ margin: 3 }}>
+            Total out : <span>{payload[0].payload.total_out}</span>
+          </p>
+        </div>
+      );
+    }
+    return null;
+  };
+
   const posted: any = paradeData.length && paradeData[0].posted;
   const surplus: any = paradeData.length && paradeData[0].surplus;
   const deficiency: any = paradeData.length && paradeData[0].deficiency;
@@ -59,13 +86,7 @@ const PradeStatement = (props: any) => {
       <Row>
         <Col>
           <Card>
-            <CardHeader>
-              <Row>
-                <Col>
-                  <h4 className="font-weight-bold">Parade Statement ({createdTime})</h4>
-                </Col>
-              </Row>
-            </CardHeader>
+            <CardHeader>Parade Statement ({createdTime})</CardHeader>
             <CardBody>
               {!isFetching && paradeData.length ? (
                 <Row>
@@ -112,13 +133,7 @@ const PradeStatement = (props: any) => {
 
         <Col>
           <Card>
-            <CardHeader>
-              <Row>
-                <Col>
-                  <h4 className="font-weight-bold">All Parade Statement</h4>
-                </Col>
-              </Row>
-            </CardHeader>
+            <CardHeader>All Parade Statements</CardHeader>
             <CardBody>
               {!isFetching && paradeData.length ? (
                 <LineChart
@@ -135,7 +150,11 @@ const PradeStatement = (props: any) => {
                   <CartesianGrid strokeDasharray="3 3" />
                   <XAxis dataKey="parade_id" />
                   <YAxis />
-                  <Tooltip labelFormatter={toolTipLabelFormatter} formatter={toolTipFormatter} />
+                  <Tooltip
+                    // labelFormatter={toolTipLabelFormatter}
+                    // formatter={toolTipFormatter}
+                    content={CustomTooltip}
+                  />
                   <Legend verticalAlign="top" formatter={renderLegendText} />
                   <Line
                     type="monotone"
@@ -146,7 +165,7 @@ const PradeStatement = (props: any) => {
                 </LineChart>
               ) : (
                 <div style={{ display: 'flex', justifyContent: 'center' }}>
-                  {isFetching ? <Loader /> : <h2>No data found </h2>}
+                  {isFetching ? <Loader /> : <h2>No data found</h2>}
                 </div>
               )}
             </CardBody>

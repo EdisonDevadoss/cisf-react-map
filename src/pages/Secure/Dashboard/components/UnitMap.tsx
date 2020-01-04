@@ -2,7 +2,7 @@ import { filter } from 'lodash';
 import React, { useState } from 'react';
 import ReactMapGL, { Marker } from 'react-map-gl';
 import CityPin from '../../../../components/MapGl/CityPin';
-import tempData from '../../../../components/MapGl/tempData';
+import tempData from '../../../../config/tempData';
 
 const mapbox_api =
   'pk.eyJ1IjoiZWRpc29uZGV2YWRvc3MiLCJhIjoiY2s0MTNweHlhMDdwZDNwcG95cmJraGl6dyJ9.aUK57pw316_tz92_mwsagA';

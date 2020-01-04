@@ -22,7 +22,7 @@ const routes = [
   {
     component: UnitInfo,
     exact: true,
-    name: 'UnitInfo',
+    name: 'Unit info',
     path: '/unitInfo/:id',
   },
 ];

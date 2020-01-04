@@ -41,7 +41,7 @@ class DefaultHeader extends Component {
               Dashboard
             </NavLink>
           </NavItem>
-          <NavItem className="px-3">
+          {/*<NavItem className="px-3">
             <Link to="/users" className="nav-link">
               Users
             </Link>
@@ -50,7 +50,7 @@ class DefaultHeader extends Component {
             <NavLink to="#" className="nav-link">
               Settings
             </NavLink>
-          </NavItem>
+          </NavItem>*/}
         </Nav>
         <Nav className="ml-auto" navbar>
           <NavItem className="d-md-down-none">
@@ -73,11 +73,11 @@ class DefaultHeader extends Component {
           </NavItem>
           <UncontrolledDropdown nav direction="down">
             <DropdownToggle nav>
-              <img
+              {/*<img
                 src={'../../assets/img/avatars/6.jpg'}
                 className="img-avatar"
                 alt="admin@bootstrapmaster.com"
-              />
+              />*/}
             </DropdownToggle>
             <DropdownMenu right>
               <DropdownItem header tag="div" className="text-center">

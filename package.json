@@ -59,11 +59,7 @@
     "tslint": "tslint --project tsconfig.json",
     "tslint:fix": "tslint --project tsconfig.json --fix"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run pre-commit"
-    }
-  },
+  
   "eslintConfig": {
     "extends": "react-app"
   },

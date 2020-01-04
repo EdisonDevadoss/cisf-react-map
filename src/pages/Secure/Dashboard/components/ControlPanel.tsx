@@ -21,10 +21,12 @@ export default class ControlPanel extends PureComponent<any> {
           <b>{getDate(settings.month)}</b>. Hover over a state to see details.
         </p>
         <hr />
-
-        <div key={'month'} className="input">
-          <label>Month</label>
+        <div key={'month'} className="input" style={{ margin: 0 }}>
+          <label className="label" style={{ margin: 0 }}>
+            Month
+          </label>
           <input
+            style={{ margin: 0 }}
             type="range"
             value={settings.month}
             min={1}

@@ -16,10 +16,18 @@ const ChangeMapPanel = (props: any) => {
     <Container>
       <h5>Click here to change map</h5>
       <ButtonGroup>
-        <Button color="primary" onClick={() => changeMap(1)} active={rSelected === 1}>
+        <Button
+          onClick={() => changeMap(1)}
+          active={rSelected === 1}
+          style={{ background: rSelected === 1 ? '#459048' : '#FFFF50' }}
+        >
           Unit map
         </Button>
-        <Button color="primary" onClick={() => changeMap(2)} active={rSelected === 2}>
+        <Button
+          style={{ background: rSelected === 2 ? '#459048' : '#FFFF50' }}
+          onClick={() => changeMap(2)}
+          active={rSelected === 2}
+        >
           Event map
         </Button>
       </ButtonGroup>

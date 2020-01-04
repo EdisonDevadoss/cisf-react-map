@@ -1,33 +1,28 @@
+import Loader from 'components/Loader';
 import React, { useEffect, useState } from 'react';
 import { Badge, Button, Card, CardBody, CardHeader, Col, FormGroup, Row } from 'reactstrap';
 import PradeStatement from './ParadeStatement';
+import UpComingEvents from './UpcomingEvents';
 
 export const UnitInfo = (props: any) => {
   const { match } = props;
   const unitId = match.params.id;
-  const [unitInfo, setUnitInfo] = useState({
-    unit_id: 0,
-    unit_address: '',
-    saction_strength: '',
-    available_strength: '',
-    near_airport: '',
-    unit_distance: '',
-    near_rail: '',
-    rail_distance: '',
-    airport_distance: '',
-    near_cisf_unit_id: '',
-    name_code: '',
-    near_unit_name_code: '',
-  });
+  const [unitInfo, setUnitInfo]: any = useState({});
+  const [isFetching, setFetching] = useState(false);
 
   console.log('unitInfo is', unitInfo);
   useEffect(() => {
-    fetch(`http://127.0.0.1:5000/v1/units_details?unitId=${unitId}`)
+    setFetching(true);
+    fetch(`https://cisf-demo-api.herokuapp.com/v1/units_details?unitId=${unitId}`)
       .then(res => {
         return res.json();
       })
       .then(result => {
+        setFetching(false);
         setUnitInfo(result[0]);
+      })
+      .catch(() => {
+        setFetching(false);
       });
   }, []);
 
@@ -55,29 +50,20 @@ export const UnitInfo = (props: any) => {
                 </Col>
                 <Col xs="3" lg="1">
                   <h4 className="font-weight-bold">
-                    <Badge color="success">{unitInfo.unit_id}</Badge>
+                    <Badge
+                      style={{
+                        background: unitInfo.bar_color,
+                        fontSize: 20,
+                      }}
+                    >
+                      {unitId}
+                    </Badge>
                   </h4>
                 </Col>
               </Row>
             </CardHeader>
             {Object.values(unitInfo).length ? (
               <CardBody>
-                {/*<Row>
-                  <Col xs="3" lg="3">
-                    <Button color="primary">
-                      <i className="fa fa-chevron-left" />
-                      &nbsp; Back
-                    </Button>
-                  </Col>
-                  <Col xs="6" lg="8">
-                    <h4 className="font-weight-bold">{unitInfo.name_code && unitInfo.name_code}</h4>
-                  </Col>
-                  <Col xs="3" lg="1">
-                    <h4 className="font-weight-bold">
-                      <Badge color="success">{unitInfo.unit_id}</Badge>
-                    </h4>
-                  </Col>
-                </Row>*/}
                 <FormGroup style={{ border: '1px solid green', padding: 5, borderColor: 'black' }}>
                   <h2 style={{ textAlign: 'center' }}>Unit information</h2>
                   <Row>
@@ -143,7 +129,7 @@ export const UnitInfo = (props: any) => {
                     <Col>
                       <h5>
                         <small>
-                          {unitAddress.map((address, index) => {
+                          {unitAddress.map((address: any, index: any) => {
                             return (
                               <p key={index} style={{ margin: 0 }}>
                                 {address}
@@ -157,8 +143,13 @@ export const UnitInfo = (props: any) => {
                 </FormGroup>
                 <hr />
                 <PradeStatement unitId={unitId} />
+                <UpComingEvents unitId={unitId} />
               </CardBody>
-            ) : null}
+            ) : (
+              <div style={{ display: 'flex', justifyContent: 'center' }}>
+                {isFetching ? <Loader /> : <h2>No data found </h2>}
+              </div>
+            )}
           </Card>
         </Col>
       </Row>
