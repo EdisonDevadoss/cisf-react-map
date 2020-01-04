@@ -63,6 +63,8 @@ const SimpleMap = (props: any) => {
     bermudaTriangle.setMap(map);
   };
 
+  console.log('location is', JSON.stringify(location));
+
   return (
     <div style={{ height: '100vh', width: '100%' }}>
       <GoogleMapReact

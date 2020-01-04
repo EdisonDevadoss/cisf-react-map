@@ -1,10 +1,14 @@
 import React from 'react';
-import UnitMap from './UnitMap';
+import MapGl from './MapGl';
 
-export const Dashboard = () => {
+export const Dashboard = (props: any) => {
+  const unitInfo = (id: any) => {
+    props.history.push(`/unitInfo/${id}`);
+  };
+
   return (
     <div>
-      <UnitMap />
+      <MapGl onClick={unitInfo} />
     </div>
   );
 };

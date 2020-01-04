@@ -11,3 +11,117 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.change-map {
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-width: 320px;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  padding: 12px 24px;
+  /* margin: 20px; */
+  margin: 3px;
+  font-size: 13px;
+  line-height: 2;
+  color: #6b6b76;
+  outline: none;
+  text-transform: uppercase;
+}
+
+
+
+.control-panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  max-width: 320px;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  padding: 12px 24px;
+  margin: 20px;
+  font-size: 13px;
+  line-height: 2;
+  color: #6b6b76;
+  outline: none;
+  text-transform: uppercase;
+}
+
+.legend-panel {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  max-width: 320px;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  padding: 12px 24px;
+  margin: 3px;
+  font-size: 13px;
+  line-height: 2;
+  color: #6b6b76;
+  outline: none;
+  text-transform: uppercase;
+}
+
+label {
+  display: inline-block;
+  width: 100px;
+}
+
+input {
+  margin-left: 20px;
+  width: 160px;
+}
+
+.legend-label {
+  display: inline-block;
+  width: 80px;
+}
+
+.legend-input {
+  margin-left: 2px;
+  width: 50px;
+}
+
+.tooltip {
+  position: absolute;
+  margin: 8px;
+  padding: 4px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  max-width: 300px;
+  font-size: 10px;
+  z-index: 9;
+  pointer-events: none;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+  font-size: smaller;
+}
+
+td {
+  font-size: smaller;
+}
+
+.text-center {
+  text-align: center;
+  margin-top: 5px;
+  font-size: smaller;
+}
+
+.ellipsis {
+  max-width: 350px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
